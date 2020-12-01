@@ -3,6 +3,7 @@
 <h2>Narrative</h2>
 You were trying to load a game. Loading *became* the game.  
   
+<h2>Wireframe</h2>
 ![Visual Wireframe](./images/CareOfLoadingWireframe.PNG)
 
 
@@ -18,7 +19,6 @@ You were trying to load a game. Loading *became* the game.
    * Minimize modal to rest
 4. Loading spinner transforms into more 'sleek' versions over time.
 5. The spinner will die and become a flat line if it is not taken care of.
-
 
 
 <h2>Stretch</h2>
