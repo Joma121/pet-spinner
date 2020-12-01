@@ -27,3 +27,4 @@ You were trying to load a game. Loading *became* the game.
    * Spinner turns red when 'hungry'
    * Spinner drifts side to side when bored
    * Spinner slows when tired
+2. Dialogue when first opened to introduce the game objectives.
