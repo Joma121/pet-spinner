@@ -6,9 +6,44 @@
     <link rel="stylesheet" href="./styles/style.css">
     <script src="./scripts/app.js" defer></script>
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-    <title>Document</title>
+    <title>Care of Loading</title>
 </head>
 <body>
-    
+    <main>
+        <div id="initialize--game">
+            <p>Hello! Click <a href="#">here</a> to start the game.</p>
+        </div>
+        <article id="gamearea">
+            <aside id="gamearea__minimize">
+                <i class="far fa-window-minimize"></i>
+            </aside>
+            <section id="gamearea__name--input">
+                <input id="name--input"type="text" placeholder="Name, ie 'Jeff'"><button id="name--btn">Name</button>
+            </section>
+            <section id="gamearea__pet">
+                <p id="pet"></p>
+            </section>
+            <section id="gamearea__name--display">
+                <p id="pet--name">Name</p>
+            </section>
+            <footer id="gamearea__stats">
+                <section id="gamearea__stats--hunger">
+                    <p>Hunger</p>
+                    <p id="hunger__value">0</p>
+                    <i class="fas fa-upload"></i>
+                </section>
+                <section id="gamearea__stats--bored">
+                    <p>Boredom</p>
+                    <p id="bored__value">0</p>
+                    <i class="fas fa-mouse-pointer"></i>
+                </section>
+                <section id="gamearea__stats--hunger">
+                    <p>Rest</p>
+                    <p id="rest__value">10</p>
+                    <i class="far fa-window-minimize"></i>
+                </section>
+            </footer>
+        </article>
+    </main>
 </body>
 </html>
