@@ -4,7 +4,7 @@
 You were trying to load a game. Loading _became_ the game.
 
 
-
+![Visual Wireframe](./images/CareOfLoadingWireframe.PNG)
 
 
 
