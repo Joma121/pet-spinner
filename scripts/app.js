@@ -61,12 +61,7 @@ const decreaseRest = function decreaseRest(){
     $(".rest__value").text(rest);
 }
 
-const checkDeath = function checkDeath(){
-    if(hunger === 10 || boredom === 10 || rest === 0){
-        return true;
-    }
-    return false;
-}
+
 const minimizeGame = function minimizeGame(){
     $("#gamearea").hide();
     $("#minimized--stats").show();
@@ -76,6 +71,44 @@ const enlargeGame = function englargeGame(){
     $("#gamearea").show();
     $("#minimized--stats").hide();
 }
+const generatePet = function generatePet(){
+    const spinner = $("#pet");
+    if(spinner.hasClass("first--form")){
+        spinner.removeClass("first--form");
+        spinner.addClass("second--form");
+    }else if(spinner.hasClass("second--form")){
+        spinner.removeClass("second--form");
+        spinner.addClass("third--form");
+    }else{
+        spinner.addClass("first--form");
+    }
+ }
+
+ 
+ const checkDeath = function checkDeath(){
+    if(hunger === 10 || boredom === 10 || rest === 0){
+        applyDeath();
+        return true;
+    }
+    return false;
+}
+
+const applyDeath = function applyDeath(){
+    const spinner = $('#pet');
+    if(spinner.hasClass("first--form")){
+        spinner.removeClass("first--form");
+        spinner.addClass("first--dead");
+    }else if(spinner.hasClass("second--form")){
+        spinner.removeClass("second--form");
+        spinner.addClass("second--dead");
+    }else{
+        spinner.removeClass("third--form");
+        spinner.addClass("third--dead");
+    }
+}
+
+
+
 
 
 // Event listener assignment
