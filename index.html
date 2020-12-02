@@ -1,49 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/style.css">
-    <script src="./scripts/app.js" defer></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-    <title>Care of Loading</title>
-</head>
-<body>
-    <main>
-        <div id="initialize--game">
-            <p>Hello! Click <a href="#">here</a> to start the game.</p>
-        </div>
-        <article id="gamearea">
-            <aside id="gamearea__minimize">
-                <i class="far fa-window-minimize"></i>
-            </aside>
-            <section id="gamearea__name--input">
-                <input id="name--input"type="text" placeholder="Name, ie 'Jeff'"><button id="name--btn">Name</button>
-            </section>
-            <section id="gamearea__pet">
-                <p id="pet"></p>
-            </section>
-            <section id="gamearea__name--display">
-                <p id="pet--name">Name</p>
-            </section>
-            <footer id="gamearea__stats">
-                <section id="gamearea__stats--hunger">
-                    <p>Hunger</p>
-                    <p id="hunger__value">0</p>
-                    <i class="fas fa-upload"></i>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Styles -->
+        <link rel="stylesheet" href="./styles/style.css">
+        <script src="https://kit.fontawesome.com/dc669676ae.js" crossorigin="anonymous"></script>
+        <!-- Scripts -->
+        <script src="./scripts/app.js" defer></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+        <title>Care of Loading</title>
+    </head>
+    <body>
+        <main>
+            <div id="initialize--game">
+                <p>Hello! Click <span id="initialize--game__link">here</span> to start the game.</p>
+            </div>
+            <article id="minimized--stats">
+                <aside id="minimized--status">
+                    <p>Name <span class="status">Resting</span>
+                    </p>
+                </aside>
+                <section id="minimized--stats__hunger">
+                    <p>Hunger <span class="hunger__value">0</span>
+                    </p>
                 </section>
-                <section id="gamearea__stats--bored">
-                    <p>Boredom</p>
-                    <p id="bored__value">0</p>
-                    <i class="fas fa-mouse-pointer"></i>
+                <section id="minimized--stats__bored">
+                    <p>Boredom <span class="boredom__value">0</span>
+                    </p>
                 </section>
-                <section id="gamearea__stats--hunger">
-                    <p>Rest</p>
-                    <p id="rest__value">10</p>
+                <section id="minimized--stats__hunger">
+                    <p>Rest <span class="rest__value">10</span>
+                    </p>
+                </section>
+            </article>
+            <article id="gamearea">
+                <aside id="gamearea__minimize">
                     <i class="far fa-window-minimize"></i>
+                </aside>
+                <section id="gamearea__name--input">
+                    <input id="name--input"type="text" placeholder="Name, ie 'Jeff'"><button id="name--btn">Name</button>
                 </section>
-            </footer>
-        </article>
-    </main>
-</body>
+                <section id="gamearea__pet">
+                    <p id="pet"></p>
+                </section>
+                <section id="gamearea__name--display">
+                    <p id="pet--name">Name</p>
+                </section>
+                <footer id="gamearea__stats">
+                    <section id="gamearea__stats--hunger">
+                        <p>Hunger</p>
+                        <p class="hunger__value">0</p>
+                        <i class="fas fa-upload"></i>
+                    </section>
+                    <section id="gamearea__stats--bored">
+                        <p>Boredom</p>
+                        <p class="boredom__value">0</p>
+                        <i class="fas fa-mouse-pointer"></i>
+                    </section>
+                    <section id="gamearea__stats--hunger">
+                        <p>Rest</p>
+                        <p class="rest__value">10</p>
+                        <i class="far fa-window-minimize"></i>
+                    </section>
+                </footer>
+            </article>
+        </main>
+    </body>
 </html>
