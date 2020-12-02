@@ -50,7 +50,7 @@ const increaseNeeds = function increaseNeeds() {
     if(boredom < 10)boredom++;
     $(".boredom__value").text(boredom);
     $(".hunger__value").text(hunger);
-    if(time%2 === 0){
+    if(time%2 === 0 && !gameMinimized){
         if(rest > 0 )rest--;
         $(".rest__value").text(rest);
     }
@@ -117,9 +117,16 @@ const setTimer = function setTimer(){
         if(checkDeath()){
             clearInterval(timer);
         }
+        if(gameMinimized && time%2){
+            increaseRest();
+        }
         if(time%5 === 0){
             increaseNeeds();
         }
+        if(time%30 === 0){
+            generatePet();
+        }
+        
     }
     const timer = setInterval(updateTime, 1000);
 }
