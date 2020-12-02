@@ -1,0 +1,33 @@
+* {
+    margin: 0;
+    padding: 0;
+
+}
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#initialize--game__link {
+    color: teal;
+}
+#initialize--game__link:hover {
+    cursor: pointer;
+}
+
+#minimized--stats {
+    /* display: none; */
+    border: 2px solid black;
+    border-radius: 3px;
+}
+#gamearea {
+    /* display: none; */
+    border: 2px solid slategray;
+    border-radius: 7px;
+}
+#gamearea_minimize i {
+    display: flex;
+    justify-self: end;
+}
