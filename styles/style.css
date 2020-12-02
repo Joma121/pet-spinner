@@ -3,6 +3,11 @@
     padding: 0;
 
 }
+:root {
+    --spinner-base-color: #1BA698;
+    --spinner-highlight-color: #27F2DE;
+    --spinner-border-color: #10665D;
+}
 body {
     height: 100vh;
     display: flex;
@@ -30,4 +35,72 @@ body {
 #gamearea_minimize i {
     display: flex;
     justify-self: end;
+}
+
+.pet {
+    transition: 5s ease-in-out all;
+}
+
+/* Spinner First form */
+.first--form {
+    height: 40px;
+    width: 40px;
+    /* background: rgba(0, 0, 0, 0.2); */
+    background: var(--spinner-base-color);
+    border-radius: 50%;
+    /* border: 2px solid rgba(0, 0, 0, 0.4); */
+    border: 2px solid var(--spinner-border-color);
+    border-top-color: var(--spinner-highlight-color);
+    animation: spinner2 600ms linear infinite;
+}
+@keyframes spinner2 {
+    to {
+        transform: rotate(360deg);
+    }
+}
+/* Spinner Second form */
+.second--form {
+    height: 40px;
+    width: 40px;
+    /* background: rgba(0, 0, 0, 0.2); */
+    background: var(--spinner-base-color);
+    border-radius: 50%;
+    /* border: 2px solid rgba(0, 0, 0, 0.4); */
+    border: 2px solid var(--spinner-border-color);
+    border-top-color: var(--spinner-highlight-color);
+    border-bottom-color: var(--spinner-highlight-color);
+    animation: spinner2 600ms linear infinite;
+}
+@keyframes spinner1 {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Spinner Third form */
+.third--form {
+    height: 40px;
+    width: 40px;
+    /* background: rgba(0, 0, 0, 0.4); */
+    background: var(--spinner-border-color);
+    border-radius: 50%;
+    border-top: 2px solid var(--spinner-highlight-color);
+    border-right: 2px solid transparent;
+    border-bottom:none;
+    border-left:none;
+    animation: spinner5 700ms linear infinite;
+}
+@keyframes spinner5 {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Spinner Dead first form */
+.dead {
+    height: 40px;
+    width: 40px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    border: 2px solid rgba(0, 0, 0, 0.4);
 }
