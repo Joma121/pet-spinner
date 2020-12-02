@@ -24,7 +24,7 @@ let hunger = 0;
 let boredom = 0;
 let rest = 10; 
 let time = 0;
-
+let gameMinimized = false;
 
 // functions
 /**
@@ -32,21 +32,28 @@ let time = 0;
  * */
 const inputName = function inputName(e){
     name = $("#name--input").val();
+    $(".pet--name").text(name);
+    const parent = $(this).parent();
+    parent.children("p").text("");
+    parent.children(":not(p)").remove();
 }
 
 const startGame = function startGame(e){
     $("#initialize--game").remove();
     generatePet();
     $("#gamearea").show();
+    setTimer();
 }
 
 const increaseNeeds = function increaseNeeds() {
     if(hunger < 10) hunger++;
     if(boredom < 10)boredom++;
-    if(rest > 0 )rest--;
-    $(".rest__value").text(rest);
     $(".boredom__value").text(boredom);
     $(".hunger__value").text(hunger);
+    if(time%2 === 0){
+        if(rest > 0 )rest--;
+        $(".rest__value").text(rest);
+    }
 };
 
 const increaseRest = function increaseRest(){
@@ -62,16 +69,17 @@ const decreaseBoredom = function decreaseBoredom(){
     $(".boredom__value").text(boredom);
 }
 
-
-const minimizeGame = function minimizeGame(){
-    $("#gamearea").hide();
-    $("#minimized--stats").show();
+const toggleMinimize = function toggleMinimize(){
+    gameMinimized = !gameMinimized;
+    if(gameMinimized){
+        $("#gamearea").hide();
+        $("#minimized--stats").show();
+    } else {
+        $("#gamearea").show();
+        $("#minimized--stats").hide();
+    }
 }
 
-const enlargeGame = function englargeGame(){
-    $("#gamearea").show();
-    $("#minimized--stats").hide();
-}
 const generatePet = function generatePet(){
     const spinner = $("#pet");
     if(spinner.hasClass("first--form")){
@@ -98,6 +106,7 @@ const applyDeath = function applyDeath(){
     const spinner = $('#pet');
         spinner.removeClass(["first--form", "second--form", "third--form"]);
         spinner.addClass("dead");
+        $(".status").text("Dead");
 }
 
 
@@ -122,8 +131,8 @@ $("#name--btn").on('click', inputName);
 $("#initialize--game__link").on('click', startGame);
 $(".fa-mouse-pointer").on('click', decreaseBoredom);
 $(".fa-upload").on('click', decreaseHunger);
-$(".fa-window-minimize").on('click', minimizeGame);
-$("#minimized--stats").on('click', enlargeGame);
+$(".fa-window-minimize").on('click', toggleMinimize);
+$("#minimized--stats").on('click', toggleMinimize);
 
 
 
