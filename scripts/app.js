@@ -23,6 +23,8 @@ let name = "";
 let hunger = 0;
 let boredom = 0;
 let rest = 10; 
+let time = 0;
+
 
 // functions
 /**
@@ -34,31 +36,30 @@ const inputName = function inputName(e){
 
 const startGame = function startGame(e){
     $("#initialize--game").remove();
+    generatePet();
     $("#gamearea").show();
 }
-const increaseHunger = function increaseHunger(){
+
+const increaseNeeds = function increaseNeeds() {
     if(hunger < 10) hunger++;
-    $(".hunger__value").text(hunger);
-}
-const increaseBoredom = function increaseBoredom(){
-    if (boredom < 10)boredom++;
+    if(boredom < 10)boredom++;
+    if(rest > 0 )rest--;
+    $(".rest__value").text(rest);
     $(".boredom__value").text(boredom);
-}
+    $(".hunger__value").text(hunger);
+};
+
 const increaseRest = function increaseRest(){
     if(rest < 10) rest++;
     $(".rest__value").text(rest);
 }
 const decreaseHunger = function decreaseHunger(){
-    hunger--;
+    if(hunger > 0)hunger--;
     $(".hunger__value").text(hunger);
 }
 const decreaseBoredom = function decreaseBoredom(){
-    boredom--;
+    if(boredom > 0)boredom--;
     $(".boredom__value").text(boredom);
-}
-const decreaseRest = function decreaseRest(){
-    rest--;
-    $(".rest__value").text(rest);
 }
 
 
@@ -100,6 +101,19 @@ const applyDeath = function applyDeath(){
 }
 
 
+const setTimer = function setTimer(){
+    console.log("timer started");
+    const updateTime = function updateTime(){
+        time++;
+        if(checkDeath()){
+            clearInterval(timer);
+        }
+        if(time%5 === 0){
+            increaseNeeds();
+        }
+    }
+    const timer = setInterval(updateTime, 1000);
+}
 
 
 
