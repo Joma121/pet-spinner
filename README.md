@@ -3,9 +3,9 @@
 <h2>Narrative</h2>
 You were trying to load a game. Loading *became* the game.  
   
-<h2>Wireframe</h2>
+<h2>Wireframes</h2>
 
-![Visual Wireframe](./images/CareOfLoadingWireframe.PNG)
+<img src="./images/CareOfLoadingWireframe.PNG" width="300"> <img src="./images/COLWire2.PNG" width="300">
 
 
 
