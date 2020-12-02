@@ -9,6 +9,7 @@
     --spinner-border-color: #10665D;
 }
 body {
+    position: relative;
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -23,12 +24,12 @@ body {
 }
 
 #minimized--stats {
-    /* display: none; */
+    display: none;
     border: 2px solid black;
     border-radius: 3px;
 }
 #gamearea {
-    /* display: none; */
+    display: none;
     border: 2px solid slategray;
     border-radius: 7px;
 }
@@ -37,6 +38,17 @@ body {
     justify-self: end;
 }
 
+
+
+
+#credits {
+    position: absolute;
+    bottom: 0;
+}
+
+
+
+/* Transition between age forms and death */
 .pet {
     transition: 2s ease-in-out all;
 }
@@ -104,3 +116,4 @@ body {
     border-radius: 50%;
     border: 2px solid rgba(0, 0, 0, 0.4);
 }
+
