@@ -95,16 +95,8 @@ const generatePet = function generatePet(){
 
 const applyDeath = function applyDeath(){
     const spinner = $('#pet');
-    if(spinner.hasClass("first--form")){
-        spinner.removeClass("first--form");
-        spinner.addClass("first--dead");
-    }else if(spinner.hasClass("second--form")){
-        spinner.removeClass("second--form");
-        spinner.addClass("second--dead");
-    }else{
-        spinner.removeClass("third--form");
-        spinner.addClass("third--dead");
-    }
+        spinner.removeClass(["first--form", "second--form", "third--form"]);
+        spinner.addClass("dead");
 }
 
 
