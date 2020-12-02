@@ -33,8 +33,6 @@ const inputName = function inputName(e){
 }
 
 const startGame = function startGame(e){
-    console.log('clicked');
-
     $("#initialize--game").remove();
     $("#gamearea").show();
 }
@@ -47,8 +45,7 @@ const increaseBoredom = function increaseBoredom(){
     $(".boredom__value").text(boredom);
 }
 const increaseRest = function increaseRest(){
-    if(rest < 10);
-    rest++;
+    if(rest < 10) rest++;
     $(".rest__value").text(rest);
 }
 const decreaseHunger = function decreaseHunger(){
@@ -70,13 +67,24 @@ const checkDeath = function checkDeath(){
     }
     return false;
 }
+const minimizeGame = function minimizeGame(){
+    $("#gamearea").hide();
+    $("#minimized--stats").show();
+}
+
+const enlargeGame = function englargeGame(){
+    $("#gamearea").show();
+    $("#minimized--stats").hide();
+}
 
 
 // Event listener assignment
 $("#name--btn").on('click', inputName);
 $("#initialize--game__link").on('click', startGame);
 $(".fa-mouse-pointer").on('click', decreaseBoredom);
-$(".fs-upload").on('click', decreaseHunger);
+$(".fa-upload").on('click', decreaseHunger);
+$(".fa-window-minimize").on('click', minimizeGame);
+$("#minimized--stats").on('click', enlargeGame);
 
 
 
