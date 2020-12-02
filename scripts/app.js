@@ -45,6 +45,11 @@ const startGame = function startGame(e){
     setTimer();
 }
 
+const hideGame = function hideGame(){
+    $("#gamearea").hide();
+    $("#minimized--stats").hide();
+}
+
 const increaseNeeds = function increaseNeeds() {
     if(hunger < 10) hunger++;
     if(boredom < 10)boredom++;
@@ -126,7 +131,6 @@ const setTimer = function setTimer(){
         if(time%30 === 0){
             generatePet();
         }
-        
     }
     const timer = setInterval(updateTime, 1000);
 }
@@ -142,7 +146,8 @@ $(".fa-window-minimize").on('click', toggleMinimize);
 $("#minimized--stats").on('click', toggleMinimize);
 
 
-
+// Invoke functions
+hideGame();
 
 
 
