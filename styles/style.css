@@ -1,12 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
+
 * {
     margin: 0;
     padding: 0;
-
 }
 :root {
     --spinner-base-color: #1BA698;
     --spinner-highlight-color: #27F2DE;
     --spinner-border-color: #10665D;
+    --accent-text-color: #24E0CE;
+    --body-background-color: #E6E6E6;
+    --game-background-color: #BFBFBF;
+    --mininmized-background-color: #999999;
+    --game-border-color: #595959;
+    --minimized-text-color: #D9D9D9;
 }
 body {
     position: relative;
@@ -14,30 +21,101 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: 'Quicksand', sans-serif;
+    background-color: #E6E6E6;
 }
 
-#initialize--game__link {
-    color: teal;
+#initialize--game__link, .pet--name, i {
+    color: var(--accent-text-color);
+    text-shadow: 1px 1px 1px var(--spinner-base-color), 
+                -1px -1px 1px var(--spinner-base-color),
+                1px -1px 1px var(--spinner-base-color),
+                -1px 1px 1px var(--spinner-base-color);
 }
-#initialize--game__link:hover {
+
+#initialize--game__link:hover, i:hover {
     cursor: pointer;
 }
 
 #minimized--stats {
-    display: none;
+    display: flex;
     border: 2px solid black;
     border-radius: 3px;
 }
-#gamearea {
-    display: none;
-    border: 2px solid slategray;
-    border-radius: 7px;
-}
-#gamearea_minimize i {
-    display: flex;
-    justify-self: end;
-}
 
+
+
+
+
+/* Gamebox styles */
+#gamearea {
+    background-color: var(--game-background-color);
+    color: white;
+    display: flex;
+    width: 275px;
+    height: 275px;
+    border: 2px solid var(--game-border-color);
+    border-radius: 7px;
+
+    flex-flow: column;
+}
+#gamearea__minimize {
+    display: flex;
+    justify-content: flex-end;
+    flex-grow:0;
+    padding: 5px;
+}
+#gamearea__communicate{
+    height: 4em;
+    text-align: center;
+}
+#gamearea__communicate input {
+    background-color: var(--mininmized-background-color);
+    color: var(--minimized-text-color);
+    border: 1px solid var(--game-border-color);
+    border-radius: 2px;
+    box-shadow: none;
+    height: 1.3em;
+}
+#gamearea__communicate input::placeholder {
+    color: var(--body-background-color);
+}
+#gamearea__communicate button {
+    background-color: var(--spinner-base-color);
+    color: var(--game-background-color);
+    box-shadow: none;
+    border: 1px solid var(--game-border-color);
+    height:1.4em;
+    width: 3.3em;
+    border-radius: 2px;
+    margin-left: 2px;
+}
+#gamearea__pet{
+    display: flex;
+    justify-content: center;
+    flex-grow:2;
+}
+#gamearea__name--display{
+    display: flex;
+    justify-content: center;
+    flex-grow:1;
+}
+#gamearea__stats {
+    display: flex;
+    border-top: 2px dashed var(--mininmized-background-color);
+    flex-flow: row;
+    flex-wrap: nowrap;
+    align-self: center;
+    justify-self: center;
+    justify-content: center;
+    flex-grow:1;
+    width:80%;
+}
+#gamearea__stats section {
+    text-align: center;
+    align-items: center;
+    flex-grow: 1;
+}
 
 
 
@@ -46,8 +124,14 @@ body {
     bottom: 0;
 }
 
-
-
+/* Pet Styles */
+.pet:hover {
+    cursor: pointer;
+}
+.pet:focus {
+  outline: none;
+  box-shadow: none;
+}
 /* Transition between age forms and death */
 .pet {
     transition: 2s ease-in-out all;
@@ -63,9 +147,9 @@ body {
     /* border: 2px solid rgba(0, 0, 0, 0.4); */
     border: 2px solid var(--spinner-border-color);
     border-top-color: var(--spinner-highlight-color);
-    animation: spinner2 600ms linear infinite;
+    animation: spinner1 600ms linear infinite;
 }
-@keyframes spinner2 {
+@keyframes spinner1 {
     to {
         transform: rotate(360deg);
     }
@@ -81,12 +165,7 @@ body {
     border: 2px solid var(--spinner-border-color);
     border-top-color: var(--spinner-highlight-color);
     border-bottom-color: var(--spinner-highlight-color);
-    animation: spinner2 600ms linear infinite;
-}
-@keyframes spinner1 {
-    to {
-        transform: rotate(360deg);
-    }
+    animation: spinner1 600ms linear infinite;
 }
 
 /* Spinner Third form */
@@ -100,12 +179,7 @@ body {
     border-right: 2px solid transparent;
     border-bottom:none;
     border-left:none;
-    animation: spinner5 700ms linear infinite;
-}
-@keyframes spinner5 {
-    to {
-        transform: rotate(360deg);
-    }
+    animation: spinner1 700ms linear infinite;
 }
 
 /* Spinner Dead first form */
