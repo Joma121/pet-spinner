@@ -5,10 +5,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Styles -->
         <link rel="stylesheet" href="./styles/style.css">
-        <script src="https://kit.fontawesome.com/dc669676ae.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
         <!-- Scripts -->
         <script src="./scripts/app.js" defer></script>
         <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/dc669676ae.js" crossorigin="anonymous"></script>
 
         <title>Care of Loading</title>
     </head>
@@ -35,7 +36,7 @@
                     
                 </section>
             </article>
-            <article id="gamearea">
+            <article id="gamearea" class="animate__animated animate__zoomIn">
                 <aside id="gamearea__minimize">
                     <i class="far fa-window-minimize"></i>
                 </aside>
@@ -44,7 +45,7 @@
                     <input id="name--input"type="text" placeholder="Name, ie 'Jeff'"><button id="name--btn">Name</button>
                 </section>
                 <section id="gamearea__pet">
-                    <button id="pet" class="pet"></button>
+                    <div id="pet--box"><button id="pet" class="pet"></button></div>
                 </section>
                 <section id="gamearea__name--display">
                     <p class="pet--name">Name</p>
