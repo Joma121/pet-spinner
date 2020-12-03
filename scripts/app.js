@@ -144,7 +144,7 @@ $(".fa-mouse-pointer").on('click', decreaseBoredom);
 $(".fa-upload").on('click', decreaseHunger);
 $(".fa-window-minimize").on('click', toggleMinimize);
 $("#minimized--stats").on('click', toggleMinimize);
-
+$("#pet").on("click", decreaseBoredom);
 
 // Invoke functions
 hideGame();
