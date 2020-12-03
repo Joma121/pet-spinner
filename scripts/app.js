@@ -25,6 +25,7 @@ const inputName = function inputName(e){
 const startGame = function startGame(e){
     $("#initialize--game").remove();
     generatePet();
+    
     $("#gamearea").show();
     setTimer();
 }
@@ -48,7 +49,10 @@ const increaseNeeds = function increaseNeeds() {
     if(time%2 === 0 && !gameMinimized){
         if(rest > 0 )rest--;
         $(".rest__value").text(rest);
+        restSpeedChange();
     }
+    boredMovement();
+    hungerColorChange();
 };
 
 /**
@@ -57,6 +61,7 @@ const increaseNeeds = function increaseNeeds() {
 const increaseRest = function increaseRest(){
     if(rest < 10) rest++;
     $(".rest__value").text(rest);
+    restSpeedChange();
 }
 
 /**
@@ -65,6 +70,7 @@ const increaseRest = function increaseRest(){
 const decreaseHunger = function decreaseHunger(){
     if(hunger > 0)hunger--;
     $(".hunger__value").text(hunger);
+    hungerColorChange();
 }
 
 /**
@@ -73,19 +79,66 @@ const decreaseHunger = function decreaseHunger(){
 const decreaseBoredom = function decreaseBoredom(){
     if(boredom > 0)boredom--;
     $(".boredom__value").text(boredom);
+    boredMovement();
 }
+
+/**
+ * @description changes the color of the pet if they are hungry
+ * */
+const hungerColorChange = function hungerColorChange(){
+    if(hunger > 6){
+        $(":root").css("--spinner-base-color", "#8F0101");
+        $(":root").css("--spinner-highlight-color", "#B50202");
+        $(":root").css("--spinner-border-color", "#570101");
+    } else if(hunger < 6){
+        $(":root").css("--spinner-base-color", "#1BA698");
+        $(":root").css("--spinner-highlight-color", "#27F2DE");
+        $(":root").css("--spinner-border-color", "#10665D");
+    }
+}
+
+/**
+ * @description changes the spin speed of the pet if they are tired
+ * */
+const restSpeedChange = function restSpeedChange(){
+    if(rest < 4){
+        $(".first--form").css("animation", "1.2s linear 0s infinite normal none running spinner1");    
+        $(".second--form").css("animation", "1.2s linear 0s infinite normal none running spinner1");    
+        $(".third--form").css("animation", "1.2s linear 0s infinite normal none running spinner1")
+    }else if(rest > 4){
+        $(".first--form").css("animation", "0.6s linear 0s infinite normal none running spinner1");    
+        $(".second--form").css("animation", "0.6s linear 0s infinite normal none running spinner1");    
+        $(".third--form").css("animation", "0.7s linear 0s infinite normal none running spinner1")
+    }
+}
+
+/**
+ * @description moves the pet left and right when bored
+ * */
+const boredMovement = function boredMovement(){
+    if(boredom > 6) {
+        $("#pet--box").css("animation", "2s ease-in-out infinite boredom");    
+        // $(".pet").css("transform", "translateX(50px) translateX(-100px) translateX(50px)");
+    } else {
+        $("#pet--box").css("animation", "");
+    }
+}
+
 
 /**
  * @description toggles display areas between active game and minimized game
  * */
-const toggleMinimize = function toggleMinimize(){
+const toggleGameDisplay = function toggleGameDisplay(){
     gameMinimized = !gameMinimized;
-    if(gameMinimized){
-        $("#gamearea").hide();
-        $("#minimized--stats").show();
-    } else {
-        $("#gamearea").show();
-        $("#minimized--stats").hide();
+    const gameBox = $("#gamearea");
+    const minBox = $("#minimized--stats");
+    gameBox.toggleClass("animate__zoomOut");
+    gameBox.toggleClass("animate__zoomIn");
+    if(gameBox.is(":hidden")){
+        minBox.toggle();
+        gameBox.toggle();
+    }else{
+        gameBox.toggle("slow", function(){ minBox.toggle();});
     }
 }
 
@@ -123,7 +176,10 @@ const applyDeath = function applyDeath(){
     const spinner = $('#pet');
         spinner.removeClass(["first--form", "second--form", "third--form"]);
         spinner.addClass("dead");
+        $("#pet--box").css("animation", "");
+
         $(".status").text("Dead");
+
 }
 
 /**
@@ -156,13 +212,12 @@ $("#name--btn").on('click', inputName);
 $("#initialize--game__link").on('click', startGame);
 $(".fa-mouse-pointer").on('click', decreaseBoredom);
 $(".fa-upload").on('click', decreaseHunger);
-$(".fa-window-minimize").on('click', toggleMinimize);
-$("#minimized--stats").on('click', toggleMinimize);
+$(".fa-window-minimize").on('click', toggleGameDisplay);
+$("#minimized--stats").on('click', toggleGameDisplay);
 $("#pet").on("click", decreaseBoredom);
 
 // Invoke functions
 hideGame();
-
 
 
 
