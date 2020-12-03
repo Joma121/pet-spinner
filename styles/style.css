@@ -14,6 +14,7 @@
     --mininmized-background-color: #999999;
     --game-border-color: #595959;
     --minimized-text-color: #D9D9D9;
+    --game-highlight-color:#1BA698;
 }
 body {
     position: relative;
@@ -27,10 +28,10 @@ body {
 
 #initialize--game__link, .pet--name, i {
     color: var(--accent-text-color);
-    text-shadow: 1px 1px 1px var(--spinner-base-color), 
-                -1px -1px 1px var(--spinner-base-color),
-                1px -1px 1px var(--spinner-base-color),
-                -1px 1px 1px var(--spinner-base-color);
+    text-shadow: 1px 1px 1px var(--game-highlight-color), 
+                -1px -1px 1px var(--game-highlight-color),
+                1px -1px 1px var(--game-highlight-color),
+                -1px 1px 1px var(--game-highlight-color);
 }
 
 #initialize--game__link:hover, i:hover {
@@ -114,7 +115,7 @@ body {
     color: var(--body-background-color);
 }
 #gamearea__communicate button {
-    background-color: var(--spinner-base-color);
+    background-color: var(--game-highlight-color);
     color: var(--game-background-color);
     box-shadow: none;
     border: 1px solid var(--game-border-color);
@@ -151,7 +152,6 @@ body {
 }
 
 
-
 #credits {
     position: absolute;
     bottom: 0;
@@ -182,11 +182,20 @@ body {
     border-top-color: var(--spinner-highlight-color);
     animation: spinner1 600ms linear infinite;
 }
+
 @keyframes spinner1 {
     to {
         transform: rotate(360deg);
     }
 }
+
+@keyframes boredom {
+    0% {transform: translateX(50px);}
+    49% {transform: translateX(-50px);}
+    50% {transform: translateX(-50px);}
+    100% {transform: translateX(50px);}
+}
+
 /* Spinner Second form */
 .second--form {
     height: 40px;
