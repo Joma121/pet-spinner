@@ -1,22 +1,3 @@
-/* 1. Click link to start game
-create division for opening text.-
-Create centered text in index file.-
-make link inline with text.-
-create modal division in body-
-create sections for the minimize button, spinner, name, stats, and buttons-
-create input and button above the spinner-
-input and button disappear when entered
-use jquery to add listener to link that will open the modal division
-
-
-2. Modal pops up with loading spinner
-3. Care for the loading spinner, stats and buttons displayed beneath spinner.
-   * Name the spinner
-   * 'Feed' by 'uploading' data
-   * Poke to prevent boredom
-   * Minimize modal to rest
-4. Loading spinner transforms into more 'sleek' versions over time.
-5. The spinner will die and become a flat line if it is not taken care of. */
 
 // Global variables
 let name = "";
@@ -38,6 +19,9 @@ const inputName = function inputName(e){
     parent.children(":not(p)").remove();
 }
 
+/**
+ * @description Initializes the game, called when "here" is clicked on initial text.
+ * */
 const startGame = function startGame(e){
     $("#initialize--game").remove();
     generatePet();
@@ -45,11 +29,17 @@ const startGame = function startGame(e){
     setTimer();
 }
 
+/**
+ * @description hides play areas on initial page load, invoked in designated area for invoked functions below
+ * */
 const hideGame = function hideGame(){
     $("#gamearea").hide();
     $("#minimized--stats").hide();
 }
 
+/**
+ * @description handles the pet's needs propogation, hunger, boredom, and rest.
+ * */
 const increaseNeeds = function increaseNeeds() {
     if(hunger < 10) hunger++;
     if(boredom < 10)boredom++;
@@ -61,19 +51,33 @@ const increaseNeeds = function increaseNeeds() {
     }
 };
 
+/**
+ * @description increases and sets displays for pet's rest value
+ * */
 const increaseRest = function increaseRest(){
     if(rest < 10) rest++;
     $(".rest__value").text(rest);
 }
+
+/**
+ * @description decreases and sets displays for pet's hunger value
+ * */
 const decreaseHunger = function decreaseHunger(){
     if(hunger > 0)hunger--;
     $(".hunger__value").text(hunger);
 }
+
+/**
+ * @description decreases and sets displays for pet's boredom value
+ * */
 const decreaseBoredom = function decreaseBoredom(){
     if(boredom > 0)boredom--;
     $(".boredom__value").text(boredom);
 }
 
+/**
+ * @description toggles display areas between active game and minimized game
+ * */
 const toggleMinimize = function toggleMinimize(){
     gameMinimized = !gameMinimized;
     if(gameMinimized){
@@ -85,6 +89,9 @@ const toggleMinimize = function toggleMinimize(){
     }
 }
 
+/**
+ * @description sets css classes to control pet's age form
+ * */
 const generatePet = function generatePet(){
     const spinner = $("#pet");
     if(spinner.hasClass("first--form")){
@@ -98,7 +105,9 @@ const generatePet = function generatePet(){
     }
  }
 
- 
+ /**
+ * @description checks if pet is dead and returns boolean. True if dead, False if alive. invokes applyDeath if pet is dead.
+ * */
  const checkDeath = function checkDeath(){
     if(hunger === 10 || boredom === 10 || rest === 0){
         applyDeath();
@@ -107,6 +116,9 @@ const generatePet = function generatePet(){
     return false;
 }
 
+/**
+ * @description invoked when pet dies, removes age form css class and applies death css class
+ * */
 const applyDeath = function applyDeath(){
     const spinner = $('#pet');
         spinner.removeClass(["first--form", "second--form", "third--form"]);
@@ -114,7 +126,9 @@ const applyDeath = function applyDeath(){
         $(".status").text("Dead");
 }
 
-
+/**
+ * @description contains control for gameplay how fast the timer runs, how often needs are increased, how fast rest recovers when minimized, and interval for pet age changes
+ * */
 const setTimer = function setTimer(){
     console.log("timer started");
     const updateTime = function updateTime(){
