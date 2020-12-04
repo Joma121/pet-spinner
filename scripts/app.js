@@ -126,7 +126,7 @@ const restSpeedChange = function restSpeedChange(){
  * */
 const boredMovement = function boredMovement(){
     if(boredom > 6) {
-        $("#pet--box").css("animation", "2s ease-in-out infinite boredom");    
+        $("#pet--box").css("animation", "2s ease-out infinite boredom");    
     } else {
         $("#pet--box").css("animation", "");
     }
