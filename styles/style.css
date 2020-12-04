@@ -187,10 +187,8 @@ body {
 .first--form {
     height: 40px;
     width: 40px;
-    /* background: rgba(0, 0, 0, 0.2); */
     background: var(--spinner-base-color);
     border-radius: 50%;
-    /* border: 2px solid rgba(0, 0, 0, 0.4); */
     border: 2px solid var(--spinner-border-color);
     border-top-color: var(--spinner-highlight-color);
     animation: spinner1 600ms linear infinite;
@@ -200,10 +198,8 @@ body {
 .second--form {
     height: 40px;
     width: 40px;
-    /* background: rgba(0, 0, 0, 0.2); */
     background: var(--spinner-base-color);
     border-radius: 50%;
-    /* border: 2px solid rgba(0, 0, 0, 0.4); */
     border: 2px solid var(--spinner-border-color);
     border-top-color: var(--spinner-highlight-color);
     border-bottom-color: var(--spinner-highlight-color);
@@ -214,7 +210,6 @@ body {
 .third--form {
     height: 40px;
     width: 40px;
-    /* background: rgba(0, 0, 0, 0.4); */
     background: var(--spinner-border-color);
     border-radius: 50%;
     border-top: 2px solid var(--spinner-highlight-color);
