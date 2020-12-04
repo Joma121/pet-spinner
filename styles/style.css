@@ -157,21 +157,6 @@ body {
     bottom: 0;
 }
 
-/* Typing effect */
-/* #gamearea__communicate p {
-    overflow: hidden; /* Ensures the content is not revealed until the animation 
-    white-space: nowrap;/* Keeps the content on a single line 
-    margin: 0 auto; /* Gives that scrolling effect as the typing happens 
-    /*letter-spacing: .15em; /* Adjust as needed 
-    animation: 
-      typing 3.5s steps(40, end);
-  }
-
-  @keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
-  } */
-
 /* Pet Styles */
 .pet:hover {
     cursor: pointer;
@@ -180,16 +165,13 @@ body {
   outline: none;
   box-shadow: none;
 }
+
 /* Transition for pet container */
 #pet--box {
     transition: 1.5s ease-in-out all;
 }
-/* Transition between age forms and death */
-.pet {
-    transition: 2s ease-in-out all;
-}
 
-
+/* Keyframes for animations */
 @keyframes spinner1 {
     to {
         transform: rotate(360deg);
@@ -197,10 +179,10 @@ body {
 }
 
 @keyframes boredom {
-    /* 0% {transform: translateX(0);} */
     33% {transform: translateX(50px);}
     66% {transform: translateX(-50px);}
 }
+
 /* Spinner First form */
 .first--form {
     height: 40px;

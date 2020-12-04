@@ -1,8 +1,3 @@
-/* Stretch */
-// introductory dialogue
-// make new function to run through dialogue and start timer afterwards
-
-
 // Global variables
 let name = "";
 let hunger = 0;
@@ -16,7 +11,7 @@ let intro = true;
 /**
  * @description Function for gathering and assigning the name for the pet spinner 
  * */
-const inputName = function inputName(e){
+const inputName = function inputName(){
     name = $("#name--input").val();
     $(".pet--name").text(name);
     const parent = $(this).parent();
@@ -126,7 +121,7 @@ const restSpeedChange = function restSpeedChange(){
  * */
 const boredMovement = function boredMovement(){
     if(boredom > 6) {
-        $("#pet--box").css("animation", "2s ease-out infinite boredom");    
+        $("#pet--box").css("animation", "2s ease-in-out infinite boredom");    
     } else {
         $("#pet--box").css("animation", "");
     }
@@ -164,6 +159,7 @@ const generatePet = function generatePet(){
         spinner.addClass("third--form");
     }else{
         spinner.addClass("first--form");
+        sleep(300).then(() => {$(".pet").css("transition", "2s ease-in-out all")})
     }
  }
 
@@ -214,12 +210,16 @@ const setTimer = function setTimer(){
     const timer = setInterval(updateTime, 1000);
 }
 
+/**
+ * @description skips intro sequence
+ * */
 const skipIntro = function skipIntro() {
     intro = false;
     $("#initialize--game").remove();
     $("#gamearea__communicate").html(`<input id="name--input"type="text" placeholder="Name, ie 'Jeff'"><button id="name--btn">Name</button>`);
     $("#minimized--stats").on('click', toggleGameDisplay);
     $("#name--btn").on('click', inputName);
+    $("#name--input").on('keypress', enterPress);
     $("#gamearea").show();
     generatePet();
     setTimer();
@@ -251,6 +251,7 @@ const introduction = function introduction(){
                     sleep(7000).then(() => {    
                         communicate.html(`<input id="name--input"type="text" placeholder="Name, ie 'Jeff'"><button id="name--btn">Name</button>`);
                     $("#name--btn").on('click', inputName);})
+                    $("#name--input").on('keypress', enterPress);
                 });
             });
         });
@@ -353,7 +354,9 @@ const introPart3 = function introPart3(str){
     }
 }
 
-
+/**
+ * @description controls stat demonstration during intro
+ * */
 const demonstration = function demonstration(str){
     const communicate = $("#gamearea__communicate");
     console.log(str);
@@ -399,9 +402,14 @@ const demonstration = function demonstration(str){
  * */
 const sleep = function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
-  }
+}
 
-
+/**
+ * @description handler for pressing enter on input box
+ * */
+const enterPress = function enterPress(e) { 
+    if(e.key === 'Enter') inputName(); 
+};
 
 // Event listener assignment
 $("#initialize--game__link").on('click', startGame);
