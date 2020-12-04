@@ -26,7 +26,7 @@ body {
     background-color: #E6E6E6;
 }
 
-#initialize--game__link, .pet--name, i {
+#initialize--game__link, #initialize--game__skip, .pet--name, i {
     color: var(--accent-text-color);
     text-shadow: 1px 1px 1px var(--game-highlight-color), 
                 -1px -1px 1px var(--game-highlight-color),
@@ -34,7 +34,7 @@ body {
                 -1px 1px 1px var(--game-highlight-color);
 }
 
-#initialize--game__link:hover, i:hover {
+#initialize--game__link:hover, #initialize--game__skip, i:hover {
     cursor: pointer;
 }
 
