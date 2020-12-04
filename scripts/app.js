@@ -44,7 +44,7 @@ const hideGame = function hideGame(){
  * */
 const increaseNeeds = function increaseNeeds() {
     if(hunger < 10) hunger++;
-    if(boredom < 10)boredom++;
+    if(boredom < 10) boredom++;
     $(".boredom__value").text(boredom);
     $(".hunger__value").text(hunger);
     if(time%2 === 0 && !gameMinimized){
@@ -90,11 +90,11 @@ const decreaseBoredom = function decreaseBoredom(){
  * @description changes the color of the pet if they are hungry
  * */
 const hungerColorChange = function hungerColorChange(){
-    if(hunger > 6){
+    if(hunger > 5){
         $(":root").css("--spinner-base-color", "#8F0101");
         $(":root").css("--spinner-highlight-color", "#B50202");
         $(":root").css("--spinner-border-color", "#570101");
-    } else if(hunger < 6){
+    } else {
         $(":root").css("--spinner-base-color", "#1BA698");
         $(":root").css("--spinner-highlight-color", "#27F2DE");
         $(":root").css("--spinner-border-color", "#10665D");
@@ -105,7 +105,7 @@ const hungerColorChange = function hungerColorChange(){
  * @description changes the spin speed of the pet if they are tired
  * */
 const restSpeedChange = function restSpeedChange(){
-    if(rest < 4){
+    if(rest < 5){
         $(".first--form").css("animation", "1.2s linear 0s infinite normal none running spinner1");    
         $(".second--form").css("animation", "1.2s linear 0s infinite normal none running spinner1");    
         $(".third--form").css("animation", "1.2s linear 0s infinite normal none running spinner1")
@@ -120,7 +120,7 @@ const restSpeedChange = function restSpeedChange(){
  * @description moves the pet left and right when bored
  * */
 const boredMovement = function boredMovement(){
-    if(boredom > 6) {
+    if(boredom > 5) {
         $("#pet--box").css("animation", "2s ease-in-out infinite boredom");    
     } else {
         $("#pet--box").css("animation", "");
