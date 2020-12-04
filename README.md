@@ -41,9 +41,9 @@ The loading spinner 'monster' struck me as more interesting because the needs fu
 
 <h3>Day 2 - Completing Design notes, Beginning code</h3>
 
-How does a loading spinner eat? - It crunches data
-How does a loading spinner play? - Click it with a mouse
-How does a loading spinner rest? - Minimize the game
+How does a loading spinner eat? - It crunches data\
+How does a loading spinner play? - Click it with a mouse\
+How does a loading spinner rest? - Minimize the game\
 I worked up a wireframe on whimsical.com. Using 2 modals, one for primary interaction and pet display, and one for when the pet was resting.
 I designed these modals to be minimal and flat, using shades of grey for everything and a highlight of teals for the pet name and interactable text and icons.
 The only other thing with color would be the pet itself.
@@ -66,10 +66,10 @@ But how do you move it, without stopping the spin?
 This took me longer than I care to admit to realize I could just throw a div around the pet and move the div instead of the pet, maintaining all the animation for the pet concurrently.
 The final item in the icebox waiting to be started.
 Introduction to the game mechanics. This was, admittedly, one of the first ideas I had for the spinner concept. I could introduce the game, as if it were the loading of the "actual" game. I had about half the dialogue already worked out from Day 1's design notes.
-I wrote up the outline of what I wanted. These lines in order, then this happens, etc.
-In order.
+I wrote up the outline of what I wanted. These lines in order, then this happens, etc.\
+In order.\
 Sure JS/JQuery would put them there in order, no one would ever see them.
-Below I outline the challenge I had here, why it was a challenge and how I overcame it.
+Below I outline why it was a challenge and how I overcame it.
 
 <h3>Day 5 - Cleanup and Polish</h3>
 
