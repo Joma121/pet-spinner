@@ -1,3 +1,7 @@
+/* Stretch */
+// introductory dialogue
+// make new function to run through dialogue and start timer afterwards
+
 
 // Global variables
 let name = "";
@@ -6,6 +10,7 @@ let boredom = 0;
 let rest = 10; 
 let time = 0;
 let gameMinimized = false;
+let intro = true;
 
 // functions
 /**
@@ -17,6 +22,7 @@ const inputName = function inputName(e){
     const parent = $(this).parent();
     parent.children("p").text("");
     parent.children(":not(p)").remove();
+    introPart2();
 }
 
 /**
@@ -27,7 +33,8 @@ const startGame = function startGame(e){
     generatePet();
     
     $("#gamearea").show();
-    setTimer();
+    waitTime(10);
+    introduction();
 }
 
 /**
@@ -118,7 +125,6 @@ const restSpeedChange = function restSpeedChange(){
 const boredMovement = function boredMovement(){
     if(boredom > 6) {
         $("#pet--box").css("animation", "2s ease-in-out infinite boredom");    
-        // $(".pet").css("transform", "translateX(50px) translateX(-100px) translateX(50px)");
     } else {
         $("#pet--box").css("animation", "");
     }
@@ -174,11 +180,11 @@ const generatePet = function generatePet(){
  * */
 const applyDeath = function applyDeath(){
     const spinner = $('#pet');
-        spinner.removeClass(["first--form", "second--form", "third--form"]);
-        spinner.addClass("dead");
-        $("#pet--box").css("animation", "");
+    spinner.removeClass(["first--form", "second--form", "third--form"]);
+    spinner.addClass("dead");
+    $("#pet--box").css("animation", "");
 
-        $(".status").text("Dead");
+    $(".status").text("Dead");
 
 }
 
@@ -207,18 +213,173 @@ const setTimer = function setTimer(){
 
 
 
+/**
+ * @description runs dialogue to introduce gameplay and begins game and timer afterward
+ * */
+const introduction = function introduction(){
+    $("i").hide();
+    const communicate = $("#gamearea__communicate");
+
+    sleep(4000).then(() => { 
+        communicate.html("<p>Oh man, this sure is taking its time loading.</p>");
+    
+        sleep(4000).then(() => { 
+            communicate.html("<p>...maybe we should do something?</p>");
+        
+            sleep(3500).then(() => { 
+                communicate.html("<p>I know! Let's give our little spinner buddy a name!</p>");
+
+                sleep(5000).then(() => { 
+                    communicate.html("<p>I vote Jeff, a nice sturdy name for the loading indicator blocking our path.</p>");
+                    sleep(7000).then(() => {    
+                        communicate.html(`<input id="name--input"type="text" placeholder="Name, ie 'Jeff'"><button id="name--btn">Name</button>`);
+                    $("#name--btn").on('click', inputName);})
+                });
+            });
+        });
+    });
+     // waitTime(10);
+    // hunger = 8;
+    // hungerColorChange();
+    // communicate.text(`What is <em>this</em> now? Is ${name} okay?`);
+    // $(".fa-upload").show();
+    // communicate.text(`Perhaps ${name} is hungry? Try feeding it some data with that upload icon.`);
+    // // while (hunger > 3) {
+    // //     waitTime(10);
+    // //     communicate.text(`Perhaps a some more? ${name} still seems hungry.`)
+    // // }
+    // hungerColorChange();
+    // communicate.text(`Nice, looks like ${name} is feeling better.`);
+    // communicate.text(`${name}, would you be so kind as to load the game for us now?`);
+    // rest = 3;
+    // restSpeedChange();
+    // communicate.text(`Oh dear. ${name} seems to be tired`);
+    // $(".fa-window-minimize").show();
+    // $(".fa-window-minimize").on('click', demoRest);
+    // communicate.text(`Why don't let ${name} rest back up to 10, could you click the minimize icon.`);
+    // waitTime(10);
+    // // while (!gameMinimized){
+    // //     communicate.text(`I'll watch out here, you let ${name} rest.`);
+    // //     waitTime(10);
+    // // }
+    // communicate.text(`Looks like you'll be taking care of this little guy for awhile.`);
+    // communicate.text(`In the future just click the box the stats are in to return from resting.`);
+    // communicate.text(`I'll leave you to it, let me know if the game ever loads.`)
+    
+    // $(".fa-window-minimize").off('click', demoRest);
+    // $(".fa-window-minimize").on('click', toggleGameDisplay);
+    // $("#minimized--stats").on('click', toggleGameDisplay);
+    // // TODO: finish dialogue to accept our new role as a spinner parent
+    // // Test and complete intro sequence functionality.
+    
+    // // setTimer();  
+}
+
+const introPart2 = function introPart2() {
+    const communicate = $("#gamearea__communicate");
+    if(name == "Jeff"){ 
+        communicate.html("<p>You thought so too? Awesome.</p>")
+    } else {
+    communicate.html("<p>Great choice!</p>");
+    }
+    sleep(5000).then(() => {
+        communicate.html("<p>So... how long are we</p>");
+        sleep(2000).then(() => {
+            boredom = 8;
+            $(".boredom__value").text(boredom);
+            boredMovement();
+            sleep(1000).then(() =>{
+                communicate.html("<p>Really? <em>It</em> is bored?</p>");
+                sleep(4000).then(() => {                
+                    $(".fa-mouse-pointer").show();
+                    communicate.html(`<p>Let's poke ${name} a few times, or use that new pointer icon.</p>`);
+                    demonstration('bored');
+                })
+            })
+        })
+    })
+}
+
+const introPart3 = function introPart3(str){
+    if(str == 'demo1'){
+        sleep(3000).then(() => {
+            communicate.html(`<p>Excellent, maybe now we can get to the game.</p>`);
+// hunger = 8;
+    // hungerColorChange();
+    // communicate.text(`What is <em>this</em> now? Is ${name} okay?`);
+    // $(".fa-upload").show();
+    // communicate.text(`Perhaps ${name} is hungry? Try feeding it some data with that upload icon.`);
+    // // while (hunger > 3) {
+    // //     waitTime(10);
+    // //     communicate.text(`Perhaps a some more? ${name} still seems hungry.`)
+    // // }
+    // hungerColorChange();
+        })
+    }
+    if(str == 'demo2'){
+
+    }
+    if(str == 'demo3'){
+
+    }
+}
+
+
+const demonstration = function demonstration(str){
+    if(str == 'bored'){
+        sleep(4000).then(() => {
+            if(bored > 3){
+                communicate.html(`<p>Perhaps a few more? ${name} still seems a bit bored.</p>`)
+                demonstration('bored');
+            } else {
+                introPart3('demo1');
+            }
+        })
+    }
+    if(str == 'rest'){
+        const restingDemo = function restingDemo(){
+            if(gameMinimized){
+                rest++;
+                if(rest >= 10){
+                    clearInterval(timer);
+                    toggleGameDisplay();
+                }
+            }
+            const timer = setInterval(restingDemo, 1000);
+        }    
+    }
+}
+
+/**
+ * @description adds delays, used for dialogue output.
+ * */
+const sleep = function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+const waitTime = function waitTime(delay){
+    // let wait = delay;
+    // console.log("start wait")
+    // const updateWait = function updateWait(){
+    //     wait--;
+    //     if(wait <= 0){
+    //         console.log("end wait")
+    //         clearInterval(timer);
+    //     }
+    // }
+    // const timer = setInterval(updateWait, 1000);
+    delay = delay*1000
+    setTimeout(delay);
+}
+
+
 // Event listener assignment
-$("#name--btn").on('click', inputName);
 $("#initialize--game__link").on('click', startGame);
 $(".fa-mouse-pointer").on('click', decreaseBoredom);
 $(".fa-upload").on('click', decreaseHunger);
-$(".fa-window-minimize").on('click', toggleGameDisplay);
-$("#minimized--stats").on('click', toggleGameDisplay);
 $("#pet").on("click", decreaseBoredom);
 
 // Invoke functions
 hideGame();
-
 
 
 
