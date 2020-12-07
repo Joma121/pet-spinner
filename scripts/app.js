@@ -217,9 +217,10 @@ const skipIntro = function skipIntro() {
     intro = false;
     $("#initialize--game").remove();
     $("#gamearea__communicate").html(`<input id="name--input"type="text" placeholder="Name, ie 'Jeff'"><button id="name--btn">Name</button>`);
+    $(".fa-window-minimize").on('click', toggleGameDisplay);
     $("#minimized--stats").on('click', toggleGameDisplay);
-    $("#name--btn").on('click', inputName);
     $("#name--input").on('keypress', enterPress);
+    $("#name--btn").on('click', inputName);
     $("#gamearea").show();
     generatePet();
     setTimer();
@@ -325,6 +326,7 @@ const introPart3 = function introPart3(str){
                     restSpeedChange();
                     communicate.html(`<p>Oh dear. ${name} seems to be tired.</p>`);
                     sleep(4000).then(() => {
+                        $(".fa-window-minimize").on('click', toggleGameDisplay);
                         $(".fa-window-minimize").show();
                         communicate.html(`<p>Why don't let ${name} rest back up to 10, could you click the minimize icon.</p>`);
                     })
@@ -334,18 +336,20 @@ const introPart3 = function introPart3(str){
     }
     if(str == 'demo3'){
         sleep(1000).then(() => {
+            $(".fa-window-minimize").off('click', toggleGameDisplay);
+            intro = false;
             communicate.html(`<p>All rested! Still no game though...</p>`);
             sleep(4000).then(() => {   
                 communicate.html(`<p>Oh, by the by, when minimized, clicking the area with the stats will return from resting.</p>`);
                 sleep(7000).then(() => {
                     communicate.html(`<p>Looks like this guy is your responsibility now.</p>`);
-                    $("#minimized--stats").on('click', toggleGameDisplay);
-                    setTimer();
-                    intro = false;
                     sleep(5000).then(() => {
                         communicate.html(`<p>let me know if the game ever loads.</p>`)
                         sleep(4000).then(() => {
                             communicate.html("");
+                            $("#minimized--stats").on('click', toggleGameDisplay);
+                            $(".fa-window-minimize").on('click', toggleGameDisplay);
+                            setTimer();
                         })
                     })
                 })
@@ -414,7 +418,6 @@ const enterPress = function enterPress(e) {
 // Event listener assignment
 $("#initialize--game__link").on('click', startGame);
 $("#initialize--game__skip").on('click', skipIntro);
-$(".fa-window-minimize").on('click', toggleGameDisplay);
 $(".fa-mouse-pointer").on('click', decreaseBoredom);
 $(".fa-upload").on('click', decreaseHunger);
 $("#pet").on("click", decreaseBoredom);
