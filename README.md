@@ -1,8 +1,16 @@
 <h1>Care of Loading</h1>
 
 <h2>Narrative</h2>
+
 You were trying to load a game. Loading *became* the game.  
-  
+
+<h2>Technology Used</h2>
+
+* HTML
+* CSS
+* Javascript
+* JQuery
+
 <h2>Wireframes</h2>
 
 <img src="./images/CareOfLoadingWireframe.PNG" width="300"> <img src="./images/COLWire2.PNG" width="300">
