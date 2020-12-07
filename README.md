@@ -1,8 +1,17 @@
 <h1>Care of Loading</h1>
 
 <h2>Narrative</h2>
+
 You were trying to load a game. Loading *became* the game.  
-  
+
+<h2>Technology Used</h2>
+
+* HTML
+* CSS
+* Javascript
+* JQuery
+
+
 <h2>Wireframes</h2>
 
 <img src="./images/CareOfLoadingWireframe.PNG" width="300"> <img src="./images/COLWire2.PNG" width="300">
@@ -34,10 +43,11 @@ You were trying to load a game. Loading *became* the game.
 
 Development was pretty steady for this project. 
 Originally, I started in functional development for the M.V.P with the intent on making it object oriented afterwards. I kept the functional design as it wasn't neccesary to refactor with the goals I had outlined. 
-<h3>Day 1 - Design notes</h3>
+<h3>Day 1 - Begin Design notes</h3>
 
 Initially, I came up with 3 possible pet ideas, and sketched out rough layouts for each.
-The loading spinner 'monster' struck me as more interesting because the needs fulfilment would be more abstract than literal.
+The loading spinner 'monster' struck me as more interesting because the needs fulfilment would be more abstract than literal.\
+I stretch the design concepts out in Day 2.
 
 <h3>Day 2 - Completing Design notes, Beginning code</h3>
 
@@ -47,6 +57,7 @@ How does a loading spinner rest? - Minimize the game\
 I worked up a wireframe on whimsical.com. Using 2 modals, one for primary interaction and pet display, and one for when the pet was resting.
 I designed these modals to be minimal and flat, using shades of grey for everything and a highlight of teals for the pet name and interactable text and icons.
 The only other thing with color would be the pet itself.
+The game area is minimal so as to fit pretty much any screen size.
 By end of day I had the HTML skeleton worked up and a few basic CSS properties for general alignment and to remove those pesky margins and paddings on everything.
 
 <h3>Day 3 - JS Contruction</h3>
@@ -61,7 +72,7 @@ All in all a productive day, a long day, but productive.
 I finished the MVP early, and even knocked out the rest of the CSS.
 It was time to tackle my icebox.
 Visual representation of stats.
-Making the spinner pet with CSS was the biggest help here, modifying its colors was pretty simple, slowing the spin as well.
+Making the spinner pet with CSS was the biggest help here, modifying its colors was pretty simple, as was slowing the spin.
 But how do you move it, without stopping the spin?
 This took me longer than I care to admit to realize I could just throw a div around the pet and move the div instead of the pet, maintaining all the animation for the pet concurrently.
 The final item in the icebox waiting to be started.
@@ -82,6 +93,10 @@ Javascript is asynchronous when it runs so even with a setTimeout, whatever came
 After reading up on the ways to delay running things I came up with a process of wrapping what I want to happen in a function call that delays what happens and cascading the sequence in a stack of that function call.
 Sample:
 ```javscript
+const sleep = function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 sleep(4000).then(() => { 
    First thing to happen
    // Runs First thing after 4 seconds.
