@@ -1,5 +1,9 @@
 <h1>Care of Loading</h1>
 
+<h2>Play</h2>
+
+[Play Care of Loading](https://joma121.github.io/pet-spinner/)
+
 <h2>Narrative</h2>
 
 You were trying to load a game. Loading *became* the game.  
