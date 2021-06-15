@@ -90,6 +90,10 @@ Javascript is asynchronous when it runs so even with a setTimeout, whatever came
 After reading up on the ways to delay running things I came up with a process of wrapping what I want to happen in a function call that delays what happens and cascading the sequence in a stack of that function call.
 Sample:
 ```javscript
+const sleep = function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 sleep(4000).then(() => { 
    First thing to happen
    // Runs First thing after 4 seconds.
